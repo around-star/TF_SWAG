@@ -93,7 +93,7 @@ def get_features(image, model, layers=None):
 
 
 def style_transfer(model, style, content, target, style_layer_weights, content_layer_weights,
-                    style_weight, content_weight):
+                    style_weight, content_weight, iter):
     content_features = get_features(content, model)
     style_features = get_features(style, model)
 
@@ -127,7 +127,7 @@ def style_transfer(model, style, content, target, style_layer_weights, content_l
 
     inputs = tf.reshape(target, (1, -1))
     results = tfp.optimizer.lbfgs_minimize(
-        f, initial_position=inputs, max_iterations = 1000)
+        f, initial_position=inputs, max_iterations = iter)
 
     final_img = im_convert(tf.reshape(results.position, target.shape))
     return final_img
@@ -170,7 +170,7 @@ def main(args):
             style_weight = 1e17
 
             final_styled = style_transfer(resnet, style, content, target, style_weights, content_weights,
-                                                    style_weight, content_weight)
+                                                    style_weight, content_weight, args.iter)
         
             content_img_name = content_image_list[i_content].split('/')
             content_img_name = content_img_name[-1].split('.')
@@ -189,6 +189,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='TensorFlow SWAG')
     parser.add_argument('--architecture', type=str, default='resnet50_swag', choices = ['resnet50_swag', 'resnet50'], help='Architecture name')
+    parser.add_argument('--iter', type=int, default=1000, help='Number of LBFGS iterations')
     args = parser.parse_args()
 
     main(args)
