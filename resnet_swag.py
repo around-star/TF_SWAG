@@ -127,7 +127,7 @@ def style_transfer(model, style, content, target, style_layer_weights, content_l
 
     inputs = tf.reshape(target, (1, -1))
     results = tfp.optimizer.lbfgs_minimize(
-        f, initial_position=inputs, max_iterations = 10)
+        f, initial_position=inputs, max_iterations = 1000)
 
     final_img = im_convert(tf.reshape(results.position, target.shape))
     return final_img
