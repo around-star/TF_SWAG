@@ -14,3 +14,6 @@ Choose any one of the architecture between `resnet50_swag` and `resnet50` by usi
 
 Change the number of iterations by using the `--iter` flag
 >  python resnet_swag.py --iter=500
+
+## Acknowledgement
+The code is heavily borrowed from the [original implementation](https://github.com/peiwang062/swag) of the paper
