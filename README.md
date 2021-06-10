@@ -5,6 +5,9 @@ Unofficial Implementation of SWAG in TensorFlow
 This repository cantains the implemetation of the paper [Rethinking and Improving the Robustness of Image Style Transfer](https://arxiv.org/abs/2104.05623) in TensorFlow.
 
 ## Usage
+Install the dependencies
+> pip install -r requirements.txt
+
 Run the following command
 > python resnet_swag.py
 
