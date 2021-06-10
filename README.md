@@ -6,17 +6,25 @@ This repository cantains the implemetation of the paper [Rethinking and Improvin
 
 ## Usage
 Install the dependencies
-> pip install -r requirements.txt
+```
+pip install -r requirements.txt
+```
 
 Run the following command
-> python resnet_swag.py
+```
+python resnet_swag.py
+```
 
 Choose any one of the architecture between `resnet50_swag` and `resnet50` by using the `--architecture` flag. The default being `resnet50_swag`
 
->  python resnet_swag.py --architecture='resnet50'
+```
+python resnet_swag.py --architecture='resnet50'
+```
 
 Change the number of iterations by using the `--iter` flag
->  python resnet_swag.py --iter=500
+```
+python resnet_swag.py --iter=500
+```
 
 ## Acknowledgement
 The code is heavily borrowed from the [original implementation](https://github.com/peiwang062/swag) of the paper
